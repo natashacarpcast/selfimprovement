@@ -6,5 +6,5 @@ spark = SparkSession \
         .getOrCreate()
 
 #Read CSV file 
-df = spark.read.option("delimiter", ";").option("header", True).csv("../self_improvement_cleaned.csv")
+df = spark.read.csv(".../just_text_submissions.csv")
 df.show()
