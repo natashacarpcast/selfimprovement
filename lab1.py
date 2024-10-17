@@ -63,7 +63,7 @@ weighted_test = model_idf.transform(vectorized_test)
 
 
 # 
-model.approxSimilarityJoin(weighted_df, weighted_test, 0.7, distCol="JaccardDistance") \
+model.approxSimilarityJoin(weighted_df, weighted_test, 0.8, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
