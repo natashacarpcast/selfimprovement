@@ -52,8 +52,7 @@ fake_post = (
     "this alignment fosters a sense of purpose and fulfillment. "
     "self-improvement should not just be about personal gain; it should consider "
     "the well-being of others. embracing morality in our journey ensures that our "
-    "efforts contribute to a better society and inspire others to do the same."
-)
+    "efforts contribute to a better society and inspire others to do the same.")
 
 
 test = spark.createDataFrame([("test01", fake_post)], ["id", "cleaned_text"])
@@ -62,7 +61,7 @@ vectorized_test = model_cv.transform(tokenized_test)
 weighted_test = model_idf.transform(vectorized_test)
 
 # Try with 0.9 maximum distance
-model.approxSimilarityJoin(weighted_df, weighted_test, 0.8, distCol="JaccardDistance") \
+model.approxSimilarityJoin(weighted_df, weighted_test, 0.9, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
