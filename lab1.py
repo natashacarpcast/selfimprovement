@@ -60,6 +60,23 @@ tokenized_test = tokenizer.transform(test)
 vectorized_test = model_cv.transform(tokenized_test)
 weighted_test = model_idf.transform(vectorized_test)
 
+
+# Try with 0.8 maximum distance
+model.approxSimilarityJoin(weighted_df, weighted_test, 0.8, distCol="JaccardDistance") \
+     .select(
+         col("datasetA.id").alias("id_reddit"),
+         col("datasetB.id").alias("id_test"),
+         col("JaccardDistance")) \
+     .show()
+
+# Try with 0.85 maximum distance
+model.approxSimilarityJoin(weighted_df, weighted_test, 0.85, distCol="JaccardDistance") \
+     .select(
+         col("datasetA.id").alias("id_reddit"),
+         col("datasetB.id").alias("id_test"),
+         col("JaccardDistance")) \
+     .show()
+
 # Try with 0.9 maximum distance
 model.approxSimilarityJoin(weighted_df, weighted_test, 0.9, distCol="JaccardDistance") \
      .select(
