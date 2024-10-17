@@ -4,6 +4,7 @@
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import CountVectorizer, IDF, Tokenizer
 from pyspark.ml.feature import MinHashLSH
+from pyspark.sql.functions import col
 
 spark = SparkSession \
         .builder \
@@ -26,7 +27,7 @@ vectorized_df = model_cv.transform(tokenized_df)
 idf = IDF(inputCol="vectorized", outputCol="tf-idf", minDocFreq = 10)
 model_idf = idf.fit(vectorized_df)
 weighted_df = model_idf.transform(vectorized_df)
-weighted_df.show()
+
 
 # Instantiate minhashing model
 mh = MinHashLSH()
@@ -43,4 +44,12 @@ test = spark.createDataFrame([("test01", "this inner battle went on for months n
 tokenized_test = tokenizer.transform(test)
 vectorized_test = model_cv.transform(tokenized_test)
 weighted_test = model_idf.transform(vectorized_test)
-weighted_test.show()
+
+
+# 
+model.approxSimilarityJoin(weighted_df, weighted_test, 0.6, distCol="JaccardDistance") \
+     .select(
+         col("df1.id").alias("idA"),
+         col("df2.id").alias("idB"),
+         col("JaccardDistance")) \
+     .show()
