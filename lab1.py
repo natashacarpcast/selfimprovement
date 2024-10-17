@@ -29,4 +29,4 @@ weighted_df = model_idf.transform(vectorized_df)
 
 #Test two cases
 weighted_df.select("vectorized", "tf-idf").rdd.map(lambda row: (row[0].toArray(), row[1].toArray())).take(1)
-weighted_df.select("vectorized", "tf-idf").rdd.map(lambda row: (row[9].toArray(), row[1].toArray())).take(1)
+
