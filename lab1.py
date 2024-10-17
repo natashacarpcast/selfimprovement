@@ -3,6 +3,7 @@
 
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import CountVectorizer, IDF, Tokenizer
+from pyspark.ml.feature import MinHashLSH
 
 spark = SparkSession \
         .builder \
@@ -20,4 +21,9 @@ tokenized_df = tokenizer.transform(df)
 cv = CountVectorizer(inputCol="tokenized", outputCol="vectorized")
 model_cv = cv.fit(tokenized_df)
 vectorized_df = model_cv.transform(tokenized_df)
-vectorized_df.show()
+
+#TF-IDF vectors
+idf = IDF(inputCol="vectorized", outputCol="tf-idf")
+model_idf = idf.fit(vectorized_df)
+weighted_df = model_idf.transform(vectorized_df)
+weighted_df.show()
