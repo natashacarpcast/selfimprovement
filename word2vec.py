@@ -58,4 +58,5 @@ cleaned_df = remover.transform(tokenized_df)
 
 #Word2Vec
 word2Vec = Word2Vec(vectorSize=100, seed =2503, minCount=10, inputCol="cleaned_tokens", outputCol="model")
-word2Vec.show()
+model = word2Vec.transform(cleaned_df)
+model.findSynonyms("morality",10)
