@@ -29,5 +29,5 @@ weighted_df = model_idf.transform(vectorized_df)
 
 #Test 
 weighted_df.select("vectorized").show(n=1, truncate=False)
-weighted_df.select("td-idf").show(n=1, truncate=False)
+weighted_df.select("tf-idf").show(n=1, truncate=False)
 
