@@ -27,6 +27,7 @@ idf = IDF(inputCol="vectorized", outputCol="tf-idf")
 model_idf = idf.fit(vectorized_df)
 weighted_df = model_idf.transform(vectorized_df)
 
-#Test two cases
-weighted_df.select("vectorized", "tf-idf").show(n=5, truncate=False)
+#Test 
+weighted_df.select("vectorized").show(n=1, truncate=False)
+weighted_df.select("td-idf").show(n=1, truncate=False)
 
