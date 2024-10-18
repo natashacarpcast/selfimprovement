@@ -1,3 +1,8 @@
+#This file takes a dataframe of reddit posts on the r/selfimprovement. Converts
+#it to word2vec vectors and then uses LSH for identifying posts that could be
+#similar to a fake post that talks about morality. 
+
+#Sources used for reference:
 #https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.feature.Word2Vec.html
 #https://www.bigspark.dev/word-embedding-word2vec-algorithm-implementation-using-sparkmllib/
 
@@ -54,11 +59,12 @@ stop_words = [
     "just", "like", "know", "get", "got", "make", "go", "going", "think", "see", "say", "said", "would", "one", 
     "two", "three", "really", "actually", "thing", "things", "people", "even", "way", "something", "anything", 
     "everything", "maybe", "someone", "anywhere", "everyone", "everybody", "someone", "anyone", "thing", "things"]
+
 remover = StopWordsRemover(stopWords=stop_words, inputCol="tokenized", 
                                          outputCol="cleaned_tokens")
 cleaned_df = remover.transform(tokenized_df)
 
-#Word2Vec
+#Create word2vec model
 word2Vec = Word2Vec(vectorSize=100, seed =2503, minCount=10, inputCol="cleaned_tokens", outputCol="model")
 model = word2Vec.fit(cleaned_df)
 word2vec_df = model.transform(cleaned_df)
@@ -88,7 +94,7 @@ fake_post = (
     "the well-being of others. embracing morality in our journey ensures that our "
     "efforts contribute to a better society and inspire others to do the same.")
 
-
+#Convert fake post into word2vec vector for comparison
 test = spark.createDataFrame([("test01", fake_post)], ["id", "cleaned_text"])
 tokenized_test = tokenizer.transform(test)
 cleaned_test = remover.transform(tokenized_test)

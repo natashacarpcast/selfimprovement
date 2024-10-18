@@ -1,4 +1,8 @@
-#Sources
+#This file takes a dataframe of reddit posts on the r/selfimprovement. Converts
+#it to TF-IDF vectors and then uses LSH for identifying posts that could be
+#similar to a fake post that talks about morality. 
+
+#Source that I used for reference
 #https://github.com/apache/spark/blob/master/examples/src/main/python/ml/tf_idf_example.py
 
 from pyspark.sql import SparkSession
@@ -28,7 +32,6 @@ idf = IDF(inputCol="vectorized", outputCol="tf-idf", minDocFreq = 10)
 model_idf = idf.fit(vectorized_df)
 weighted_df = model_idf.transform(vectorized_df)
 
-
 # Instantiate minhashing model
 mh = MinHashLSH()
 mh.setInputCol("tf-idf")
@@ -54,12 +57,13 @@ fake_post = (
     "the well-being of others. embracing morality in our journey ensures that our "
     "efforts contribute to a better society and inspire others to do the same.")
 
-
+#Convert fake post into tf-idf vector for comparison
 test = spark.createDataFrame([("test01", fake_post)], ["id", "cleaned_text"])
 tokenized_test = tokenizer.transform(test)
 vectorized_test = model_cv.transform(tokenized_test)
 weighted_test = model_idf.transform(vectorized_test)
 
+#Look for posts that have certain similarity with the fake post
 
 # Try with 0.8 maximum distance
 model.approxSimilarityJoin(weighted_df, weighted_test, 0.8, distCol="JaccardDistance") \
