@@ -95,7 +95,7 @@ fake_post = (
     "efforts contribute to a better society and inspire others to do the same.")
 
 #Convert fake post into word2vec vector for comparison
-test = spark.createDataFrame([("test01", fake_post)], ["id", "cleaned_text"])
+test = spark.createDataFrame([("test01", fake_post)], ["id", "cleaned_tokens"])
 tokenized_test = tokenizer.transform(test)
 cleaned_test = remover.transform(tokenized_test)
 word2vec_test = model.transform(cleaned_test)
