@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=ssd-spark-example
-#SBATCH --output=ssd-spark.out
-#SBATCH --error=ssd-spark.err
+#SBATCH --job-name=tdidf
+#SBATCH --output=tfidf.out
+#SBATCH --error=tfidf.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=4
 #SBATCH --mem=40G

@@ -95,16 +95,16 @@ cleaned_test = remover.transform(tokenized_test)
 word2vec_test = model.transform(cleaned_test)
 
 
-# Try with 0.7 maximum distance
-model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.7, distCol="JaccardDistance") \
+# Try with 0.8 maximum distance
+model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.8, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
          col("JaccardDistance")) \
      .show()
 
-# Try with 0.8 maximum distance
-model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.8, distCol="JaccardDistance") \
+# Try with 0.85 maximum distance
+model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.85, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),

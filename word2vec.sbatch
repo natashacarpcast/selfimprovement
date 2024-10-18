@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=ssd-spark-example
-#SBATCH --output=ssd-spark.out
-#SBATCH --error=ssd-spark.err
+#SBATCH --job-name=word2vec
+#SBATCH --output=word2vec.out
+#SBATCH --error=word2vec.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=20
 #SBATCH --mem=160G
