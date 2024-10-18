@@ -65,9 +65,9 @@ remover = StopWordsRemover(stopWords=stop_words, inputCol="tokenized",
 cleaned_df = remover.transform(tokenized_df)
 
 #Create word2vec model
-word2Vec = Word2Vec(vectorSize=100, seed =2503, minCount=10, inputCol="cleaned_tokens", outputCol="model")
-model = word2Vec.fit(cleaned_df)
-word2vec_df = model.transform(cleaned_df)
+word2vec = Word2Vec(vectorSize=100, seed =2503, minCount=10, inputCol="cleaned_tokens", outputCol="model")
+word2vec_model = word2vec.fit(cleaned_df)
+word2vec_df = word2vec_model.transform(cleaned_df)
 
 # Instantiate minhashing model
 mh = MinHashLSH()
@@ -76,8 +76,8 @@ mh.setOutputCol("hashes")
 mh.setSeed(2503)
 
 # Fit model on word2vec vectors
-model = mh.fit(word2vec_df)
-model.setInputCol("model")
+mh_model = mh.fit(word2vec_df)
+mh_model.setInputCol("model")
 
 # Create a test item
 
@@ -98,11 +98,11 @@ fake_post = (
 test = spark.createDataFrame([("test01", fake_post)], ["id", "cleaned_text"])
 tokenized_test = tokenizer.transform(test)
 cleaned_test = remover.transform(tokenized_test)
-word2vec_test = model.transform(cleaned_test)
+word2vec_test = word2vec_model.transform(cleaned_test)
 
 
 # Try with 0.8 maximum distance
-model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.8, distCol="JaccardDistance") \
+mh_model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.8, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
@@ -110,7 +110,7 @@ model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.8, distCol="JaccardDist
      .show()
 
 # Try with 0.85 maximum distance
-model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.85, distCol="JaccardDistance") \
+mh_model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.85, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
@@ -118,7 +118,7 @@ model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.85, distCol="JaccardDis
      .show()
 
 # Try with 0.9 maximum distance
-model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.9, distCol="JaccardDistance") \
+mh_model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.9, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
