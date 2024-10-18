@@ -7,6 +7,8 @@ import pyspark.sql.functions as F
 from pyspark.ml.feature import Tokenizer
 from pyspark.ml.feature import StopWordsRemover
 from pyspark.ml.feature import Word2Vec
+from pyspark.ml.feature import MinHashLSH
+from pyspark.sql.functions import col
 
 spark = SparkSession \
         .builder \
@@ -60,5 +62,60 @@ cleaned_df = remover.transform(tokenized_df)
 word2Vec = Word2Vec(vectorSize=100, seed =2503, minCount=10, inputCol="cleaned_tokens", outputCol="model")
 model = word2Vec.fit(cleaned_df)
 word2vec_df = model.transform(cleaned_df)
-word2vec_df.show()
+
+# Instantiate minhashing model
+mh = MinHashLSH()
+mh.setInputCol("model")
+mh.setOutputCol("hashes")
+mh.setSeed(2503)
+
+# Fit model on word2vec vectors
+model = mh.fit(word2vec_df)
+model.setInputCol("model")
+
+# Create a test item
+
+#Asked ChatGPT: "Imagine you are a participant in the subreddit r/selfimprovement.
+#Write a prompt discussing morality as an important aspect for pursuing self 
+#improvement. Put it in a python string, lower case and spread through multiple lines
+
+fake_post = (
+    "morality guides our actions and decisions, providing a foundation for growth. "
+    "when we align our self-improvement goals with our moral values, "
+    "we not only enhance ourselves but also positively impact those around us. "
+    "this alignment fosters a sense of purpose and fulfillment. "
+    "self-improvement should not just be about personal gain; it should consider "
+    "the well-being of others. embracing morality in our journey ensures that our "
+    "efforts contribute to a better society and inspire others to do the same.")
+
+
+test = spark.createDataFrame([("test01", fake_post)], ["id", "cleaned_text"])
+tokenized_test = tokenizer.transform(test)
+cleaned_test = remover.transform(tokenized_test)
+word2vec_test = model.transform(cleaned_test)
+
+
+# Try with 0.7 maximum distance
+model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.7, distCol="JaccardDistance") \
+     .select(
+         col("datasetA.id").alias("id_reddit"),
+         col("datasetB.id").alias("id_test"),
+         col("JaccardDistance")) \
+     .show()
+
+# Try with 0.8 maximum distance
+model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.8, distCol="JaccardDistance") \
+     .select(
+         col("datasetA.id").alias("id_reddit"),
+         col("datasetB.id").alias("id_test"),
+         col("JaccardDistance")) \
+     .show()
+
+# Try with 0.9 maximum distance
+model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.9, distCol="JaccardDistance") \
+     .select(
+         col("datasetA.id").alias("id_reddit"),
+         col("datasetB.id").alias("id_test"),
+         col("JaccardDistance")) \
+     .show()
 
