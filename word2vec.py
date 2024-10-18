@@ -96,7 +96,7 @@ word2vec_test = model.transform(cleaned_test)
 
 
 # Try with 0.7 maximum distance
-model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.7, distCol="JaccardDistance") \
+model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.7, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
@@ -104,7 +104,7 @@ model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.7, distCol="JaccardDista
      .show()
 
 # Try with 0.8 maximum distance
-model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.8, distCol="JaccardDistance") \
+model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.8, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
@@ -112,7 +112,7 @@ model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.8, distCol="JaccardDista
      .show()
 
 # Try with 0.9 maximum distance
-model.approxSimilarityJoin(word2vec_df, cleaned_test, 0.9, distCol="JaccardDistance") \
+model.approxSimilarityJoin(word2vec_df, word2vec_test, 0.9, distCol="JaccardDistance") \
      .select(
          col("datasetA.id").alias("id_reddit"),
          col("datasetB.id").alias("id_test"),
