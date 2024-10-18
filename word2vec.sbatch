@@ -4,7 +4,7 @@
 #SBATCH --output=word2vec.out
 #SBATCH --error=word2vec.err
 #SBATCH --nodes=1
-#SBATCH --ntasks=20
+#SBATCH --ntasks=30
 #SBATCH --mem=160G
 #SBATCH --partition=ssd
 #SBATCH --account=ssd
