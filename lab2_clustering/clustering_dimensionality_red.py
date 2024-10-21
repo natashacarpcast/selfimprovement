@@ -53,7 +53,7 @@ pca_features.persist()
 
 #Perform clustering with k means. First create function
 def clustering_pca(k):
-    pca_kmeans = KMeans(k, seed=2503)
+    pca_kmeans = KMeans(k=k, seed=2503)
     pca_model = pca_kmeans.fit(pca_features)
     pca_pred = pca_model.transform(pca_features)
     pca_evaluator = ClusteringEvaluator()
@@ -85,7 +85,7 @@ U_df.persist()
 
 #Create function to perform k means clustering, now with SVD
 def clustering_svd(k):
-        svd_kmeans = KMeans(k=3, seed=1)
+        svd_kmeans = KMeans(k=k, seed=2503)
         svd_model = svd_kmeans.fit(U_df)
         svd_predictions = svd_model.transform(U_df)
         svd_evaluator = ClusteringEvaluator()
