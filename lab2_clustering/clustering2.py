@@ -22,8 +22,8 @@ scores = ['Care_Score', 'Fairness_Score', 'Loyalty_Score',
        'Sanctity_Sentiment']
 
 #Make sure they're read as floats
-df_features = df.select(*(F.col(c).cast("float").alias(c) for c in scores)).dropna()
-df_features = df_features.withColumn('features', F.array(*[F.col(c) for c in scores]))\
+df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores)).dropna()
+df_features = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
                                                     .select('features')
 
 #Do SVD dimensionality reduction 
@@ -53,15 +53,14 @@ print("Silhouette with squared euclidean distance = {} when using SVD and 2 k cl
 
 
 #Insert predictions in original df 
-df_features_with_id = df_features.withColumn("id_clst", F.monotonically_increasing_id())
+df_features_with_id = df_features_og.withColumn("id_clst", F.monotonically_increasing_id())
 svd_predictions_with_id = svd_predictions.withColumn("id_clst", F.monotonically_increasing_id())
 merged_df = df_features_with_id.join(svd_predictions_with_id, on="id_clst", how="inner")
 
-merged_df.show(5)
 
 # Generate summary statistics of the scores for each cluster
-#summary_df = merged_df.groupBy('prediction').agg(
-   # *[F.mean(c).alias(f'mean_{c}') for c in scores] +  
-   # [F.stddev(c).alias(f'stddev_{c}') for c in scores])
+summary_df = merged_df.groupBy('prediction').agg(
+   *[F.mean(c).alias(f'mean_{c}') for c in scores] +  
+   [F.stddev(c).alias(f'stddev_{c}') for c in scores])
 
-#summary_df.show()
+summary_df.show()
