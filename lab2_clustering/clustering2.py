@@ -57,9 +57,11 @@ df_features_with_id = df_features.withColumn("id_clst", F.monotonically_increasi
 svd_predictions_with_id = svd_predictions.withColumn("id_clst", F.monotonically_increasing_id())
 merged_df = df_features_with_id.join(svd_predictions_with_id, on="id_clst", how="inner")
 
-# Generate summary statistics of the scores for each cluster
-summary_df = merged_df.groupBy('prediction').agg(
-    *[F.mean(c).alias(f'mean_{c}') for c in scores] +  
-    [F.stddev(c).alias(f'stddev_{c}') for c in scores])
+merged_df.show(5)
 
-summary_df.show()
+# Generate summary statistics of the scores for each cluster
+#summary_df = merged_df.groupBy('prediction').agg(
+   # *[F.mean(c).alias(f'mean_{c}') for c in scores] +  
+   # [F.stddev(c).alias(f'stddev_{c}') for c in scores])
+
+#summary_df.show()
