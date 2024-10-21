@@ -55,7 +55,7 @@ print("Silhouette with squared euclidean distance = {} when using SVD and 2 k cl
 #Insert predictions in original df 
 df_features_with_id = df_features.withColumn("id_clst", F.monotonically_increasing_id())
 svd_predictions_with_id = svd_predictions.withColumn("id_clst", F.monotonically_increasing_id())
-merged_df = df_features_with_id.join(svd_predictions_with_id, on="id", how="inner")
+merged_df = df_features_with_id.join(svd_predictions_with_id, on="id_clst", how="inner")
 
 # Generate summary statistics of the scores for each cluster
 summary_df = merged_df.groupBy('prediction').agg(
