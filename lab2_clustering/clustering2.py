@@ -51,6 +51,9 @@ silhouette = svd_evaluator.evaluate(svd_predictions)
 #Confirm silhouette
 print("Silhouette with squared euclidean distance = {} when using SVD and 2 k clusters".format(str(silhouette)))
 
+svd_predictions.groupby('prediction') \
+               .count() \
+               .show()
 
 #Insert predictions in original df 
 df_features_with_id = df_features_og.withColumn("id_clst", F.monotonically_increasing_id())
@@ -64,3 +67,7 @@ summary_df = merged_df.groupBy('prediction').agg(
    [F.stddev(c).alias(f'stddev_{c}') for c in scores])
 
 summary_df.show()
+
+# Export summary_df to a CSV file
+summary_df.write.csv("summary_scores_clusters.csv", header=True, mode="overwrite")
+
