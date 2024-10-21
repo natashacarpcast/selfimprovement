@@ -13,7 +13,7 @@ spark = SparkSession \
         .appName("dr_cluster") \
         .getOrCreate()
 
-df = spark.read.csv('cleaned_emfd_liwc_results.csv', header=True)
+df = spark.read.csv('../cleaned_emfd_liwc_results.csv', header=True)
 
 #extended Moral Foundation Dictionary scores
 scores = ['Care_Score', 'Fairness_Score', 'Loyalty_Score',
