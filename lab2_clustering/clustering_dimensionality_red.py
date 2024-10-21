@@ -24,7 +24,7 @@ scores = ['Care_Score', 'Fairness_Score', 'Loyalty_Score',
        'Sanctity_Sentiment']
 
 #Make sure they're read as floats
-df_features = df.select(*(F.col(c).cast("float").alias(c) for c in scores))
+df_features = df.select(*(F.col(c).cast("float").alias(c) for c in scores)).dropna()
 df_features = df_features.withColumn('features', F.array(*[F.col(c) for c in scores]))\
                                                     .select('features')
 
