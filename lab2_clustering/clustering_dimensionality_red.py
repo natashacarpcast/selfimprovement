@@ -14,8 +14,6 @@ spark = SparkSession \
         .getOrCreate()
 
 df = spark.read.csv('../cleaned_emfd_liwc_results.csv', header=True)
-#first try with a few
-df = df.limit(100)
 
 #extended Moral Foundation Dictionary scores
 scores = ['Care_Score', 'Fairness_Score', 'Loyalty_Score',
