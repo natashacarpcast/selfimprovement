@@ -59,7 +59,7 @@ def clustering_pca(k):
     print("Silhouette with squared euclidean distance = {} when using PCA and {} k clusters".format(str(silhouette), k))
 
 #Run it for different k 
-k_to_try = [2,5,8]  
+k_to_try = [2,3,4,5,6,7,8,9,10]  
 for k in k_to_try:
     clustering_pca(k)
 
