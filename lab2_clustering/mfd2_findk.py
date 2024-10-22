@@ -56,6 +56,12 @@ def clustering_pca(k):
     pca_evaluator = ClusteringEvaluator()
     silhouette = pca_evaluator.evaluate(pca_pred)
     print("Silhouette with squared euclidean distance = {} when using PCA and {} k clusters".format(str(silhouette), k))
+    print("Predictions corresponding to PCA and {} k clusters".format(k))
+    pca_pred.groupby('prediction') \
+               .count() \
+               .show()
+
+
 
 #Run it for different k 
 k_to_try = [2,3,4,5,6,7,8,9,10]  
@@ -88,6 +94,10 @@ def clustering_svd(k):
         svd_evaluator = ClusteringEvaluator()
         silhouette = svd_evaluator.evaluate(svd_predictions)
         print("Silhouette with squared euclidean distance = {} when using SVD and {} k clusters".format(str(silhouette), k))
+        print("Predictions corresponding to SVD and {} k clusters".format(k))
+        svd_predictions.groupby('prediction') \
+               .count() \
+               .show()
 
 for k in k_to_try:
     clustering_svd(k)
