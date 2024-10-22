@@ -71,11 +71,11 @@ merged_df = df_features_with_id.join(pca_predictions_with_id, on="id_clst", how=
 merged_df.show(10)
 
 # Generate summary statistics of the scores for each cluster
-summary_df = merged_df.groupBy('prediction').agg(
-   *[F.mean(c).alias(f'mean_{c}') for c in scores] +  
-   [F.stddev(c).alias(f'stddev_{c}') for c in scores])
+#summary_df = merged_df.groupBy('prediction').agg(
+  # *[F.mean(c).alias(f'mean_{c}') for c in scores] +  
+   #[F.stddev(c).alias(f'stddev_{c}') for c in scores])
 
-summary_df.show()
+#summary_df.show()
 
 #Visualize some items in each cluster
 merged_df.filter(F.col('prediction') == 0) \
