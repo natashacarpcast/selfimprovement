@@ -22,11 +22,11 @@ scores = ['Care_Virtue', 'Care_Vice', 'Fairness_Virtue',
 
 #Make sure they're read as floats
 df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores)).dropna()
-df_features = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
-                                                    .select('features')
+df_features_og = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
+                                                    .select('id','features')
 
 #Create dense vector format for PCA and k means
-vectors = df_features.rdd.map(lambda row: Vectors.dense(row.features))
+vectors = df_features_og.rdd.map(lambda row: Vectors.dense(row.features))
 features = spark.createDataFrame(vectors.map(Row), ["features_unscaled"])
 
 #Standardize as the main scores and the sentiments have different scales
@@ -75,8 +75,14 @@ summary_df = merged_df.groupBy('prediction').agg(
 
 summary_df.show()
 
-#Show centroids
-centers = model.clusterCenters()
-print("Cluster Centers: ")
-for center in centers:
-    print(center)
+#Visualize some items in each cluster
+merged_df.filter(F.col('prediction') == 0) \
+                    .show(5)
+
+merged_df.filter(F.col('prediction') == 1) \
+                    .show(5)
+
+merged_df.filter(F.col('prediction') == 2) \
+                    .show(5)
+
+
