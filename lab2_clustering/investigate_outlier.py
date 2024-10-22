@@ -68,7 +68,7 @@ pca_features.unpersist()
 df_features_with_id = df_features_og.withColumn("id_clst", F.monotonically_increasing_id())
 pca_predictions_with_id = pca_pred.withColumn("id_clst", F.monotonically_increasing_id())
 merged_df = df_features_with_id.join(pca_predictions_with_id, on="id_clst", how="inner")
-
+merged_df.show(10)
 
 # Generate summary statistics of the scores for each cluster
 summary_df = merged_df.groupBy('prediction').agg(
