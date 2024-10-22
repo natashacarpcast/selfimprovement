@@ -14,6 +14,7 @@ spark = SparkSession \
         .getOrCreate()
 
 df = spark.read.csv('../cleaned_mfd2_liwc_results.csv', header=True)
+df.filter(F.col('id') == '13646ok').show(5)
 
 print(df.columns)
 
@@ -26,7 +27,7 @@ scores = ['Care_Virtue', 'Care_Vice', 'Fairness_Virtue',
 df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores), 'id').dropna()
 
 df_features_og.filter(F.col('id') == '13646ok').show(5)
-
+ 
 '''
 df_features_og = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
                                                     .select('id','features')
