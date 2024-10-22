@@ -15,6 +15,8 @@ spark = SparkSession \
 
 df = spark.read.csv('../cleaned_mfd2_liwc_results.csv', header=True)
 
+print(df.columns)
+
 #extended Moral Foundation Dictionary scores
 scores = ['Care_Virtue', 'Care_Vice', 'Fairness_Virtue',
        'Fairness_Vice', 'Loyalty_Virtue', 'Loyalty_Vice', 'Authority_Virtue',
