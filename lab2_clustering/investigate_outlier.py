@@ -77,12 +77,12 @@ summary_df.show()
 
 #Visualize some items in each cluster
 merged_df.filter(F.col('prediction') == 0) \
-                    .show(5)
+                    .show(10)
 
 merged_df.filter(F.col('prediction') == 1) \
-                    .show(5)
+                    .show(10)
 
 merged_df.filter(F.col('prediction') == 2) \
-                    .show(5)
+                    .show(10)
 
 
