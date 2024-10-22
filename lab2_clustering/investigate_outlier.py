@@ -24,6 +24,10 @@ scores = ['Care_Virtue', 'Care_Vice', 'Fairness_Virtue',
 
 #Make sure they're read as floats
 df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores), 'id').dropna()
+
+df_features_og.filter(F.col('id') == '13646ok').show(5)
+
+'''
 df_features_og = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
                                                     .select('id','features')
 
@@ -86,5 +90,4 @@ merged_df.filter(F.col('prediction') == 1) \
 
 merged_df.filter(F.col('prediction') == 2) \
                     .show(10)
-
-
+'''
