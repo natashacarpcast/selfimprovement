@@ -23,7 +23,7 @@ scores = ['Care_Virtue', 'Care_Vice', 'Fairness_Virtue',
        'Authority_Vice', 'Sanctity_Virtue', 'Sanctity_Vice']
 
 #Make sure they're read as floats
-df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores)).dropna()
+df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores), 'id').dropna()
 df_features_og = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
                                                     .select('id','features')
 
