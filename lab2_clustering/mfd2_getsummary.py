@@ -21,9 +21,9 @@ scores = ['Care_Virtue', 'Care_Vice', 'Fairness_Virtue',
        'Authority_Vice', 'Sanctity_Virtue', 'Sanctity_Vice']
 
 #Make sure they're read as floats
-df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores), 'id').dropna() 
+df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores)).dropna() 
 df_features_og = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
-                                                    .select('id','features')
+                                                    .select('features')
 
 #Create dense vector format for PCA and k means
 vectors = df_features_og.rdd.map(lambda row: Vectors.dense(row.features))
@@ -68,10 +68,13 @@ pca_predictions_with_id = pca_pred.withColumn("id_clst", F.monotonically_increas
 merged_df = df_features_with_id.join(pca_predictions_with_id, on="id_clst", how="inner")
 merged_df.show(10)
 
-#Visualize some items in each cluster
-merged_df.filter(F.col('prediction') == 0) \
-                    .show(10)
+#Get summary statistics
+# Generate summary statistics of the scores for each cluster
+summary_df = merged_df.groupBy('prediction').agg(
+  *[F.mean(c).alias(f'mean_{c}') for c in scores] +  
+   [F.stddev(c).alias(f'stddev_{c}') for c in scores])
 
-merged_df.filter(F.col('prediction') == 1) \
-                    .show(10)
+summary_df.show()
 
+# Export summary_df to a CSV file
+summary_df.write.csv("summary_mfd2_clusters.csv", header=True, mode="overwrite")
