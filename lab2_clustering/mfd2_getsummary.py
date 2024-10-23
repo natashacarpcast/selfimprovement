@@ -22,11 +22,11 @@ scores = ['Care_Virtue', 'Care_Vice', 'Fairness_Virtue',
 
 #Make sure they're read as floats
 df_features_og = df.select(*(F.col(c).cast("float").alias(c) for c in scores)).dropna() 
-df_features_og = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
+df_features = df_features_og.withColumn('features', F.array(*[F.col(c) for c in scores]))\
                                                     .select('features')
 
 #Create dense vector format for PCA and k means
-vectors = df_features_og.rdd.map(lambda row: Vectors.dense(row.features))
+vectors = df_features.rdd.map(lambda row: Vectors.dense(row.features))
 features = spark.createDataFrame(vectors.map(Row), ["features_unscaled"])
 
 #Standardize as the main scores and the sentiments have different scales
