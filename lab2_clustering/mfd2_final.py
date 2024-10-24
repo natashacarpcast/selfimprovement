@@ -84,4 +84,5 @@ merged_df.filter(F.col('prediction') == 0) \
 merged_df.filter(F.col('prediction') == 1) \
                     .show(10)
 
-
+#Send to parquet files
+merged_df.write.mode('overwrite').parquet('data_and_predictions')
