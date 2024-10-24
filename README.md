@@ -1,6 +1,6 @@
 # selfimprovement
 
-The files included in this repo should be viewed in the following order:
+### Lab 1 
 
 1- [TF-IDF experimentation](tfidf.py): This file takes a dataframe of reddit posts on the r/selfimprovement. Converts it to TF-IDF vectors and then uses LSH for identifying posts that could be similar to a fake post that talks about morality. 
 
@@ -11,3 +11,5 @@ The files included in this repo should be viewed in the following order:
 4 - [Output of TF-IDF experimentation](tfidf.out) and [output of word2vec experimentation](word2vec.out)
 
 5 - [Notebook](exploring_reddit.ipynb) exploring the found similar reddit posts from TF-IDF LSH. 
+
+### Lab 2
