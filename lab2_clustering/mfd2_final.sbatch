@@ -17,4 +17,4 @@ export PYSPARK_PYTHON=/software/python-anaconda-2022.05-el8-x86_64/bin/python3
 spark-submit --total-executor-cores 4 --executor-memory 16G --driver-memory 16G mfd2_final.py
 
 # to filter out logging messages from output, run the following:
-cat mfd2_final.out | grep -vE "INFO|WARN"
+cat mfd2_final.out | grep -vE "INFO|WARN" > test.txt 
