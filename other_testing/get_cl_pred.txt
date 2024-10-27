@@ -1,0 +1,910 @@
+[rdd_30_0]
+[rdd_30_0]
+[rdd_30_0]
+[rdd_30_0]
+[rdd_56_0]
+Silhouette with squared euclidean distance = 0.5595240096211906 when using PCA and 4 k clusters
+Predictions corresponding to PCA and 4 k clusters
++----------+------+
+|prediction| count|
++----------+------+
+|         1|301751|
+|         3| 33824|
+|         2| 17217|
+|         0|168417|
++----------+------+
+
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+-----+--------------------+----------+
+|id_clst|Care_Virtue|Care_Vice|Fairness_Virtue|Fairness_Vice|Loyalty_Virtue|Loyalty_Vice|Authority_Virtue|Authority_Vice|Sanctity_Virtue|Sanctity_Vice|   id|            features|prediction|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+-----+--------------------+----------+
+|      0|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|hk5r2|           [0.0,0.0]|         1|
+|      7|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|q70xe|           [0.0,0.0]|         1|
+|     19|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|sa2de|           [0.0,0.0]|         1|
+|     22|       0.52|     0.52|            0.0|          0.0|           0.0|         0.0|            0.52|           0.0|            0.0|         0.52|srhry|[-0.9991694206341...|         0|
+|     25|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|         0.52|tucmd|[-0.2091364779227...|         1|
+|     26|       2.41|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|u8ury|[-0.1483413335364...|         0|
+|     29|        0.0|      0.0|            0.0|          0.0|           0.0|        0.26|             0.0|           0.0|            0.0|          0.0|ufxst|[-0.8094812069417...|         1|
+|     31|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|            0.51|           0.0|            0.0|          0.0|umfq3|[-0.3159410928903...|         1|
+|     32|        1.1|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|uov5x|[-0.0677076616661...|         1|
+|     34|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|uqxay|           [0.0,0.0]|         1|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+-----+--------------------+----------+
+only showing top 10 rows
+
++----------+------------------+-------------------+--------------------+--------------------+-------------------+--------------------+---------------------+--------------------+--------------------+-------------------+------------------+-------------------+----------------------+--------------------+---------------------+--------------------+-----------------------+---------------------+----------------------+--------------------+
+|prediction|  mean_Care_Virtue|     mean_Care_Vice|mean_Fairness_Virtue|  mean_Fairness_Vice|mean_Loyalty_Virtue|   mean_Loyalty_Vice|mean_Authority_Virtue| mean_Authority_Vice|mean_Sanctity_Virtue| mean_Sanctity_Vice|stddev_Care_Virtue|   stddev_Care_Vice|stddev_Fairness_Virtue|stddev_Fairness_Vice|stddev_Loyalty_Virtue| stddev_Loyalty_Vice|stddev_Authority_Virtue|stddev_Authority_Vice|stddev_Sanctity_Virtue|stddev_Sanctity_Vice|
++----------+------------------+-------------------+--------------------+--------------------+-------------------+--------------------+---------------------+--------------------+--------------------+-------------------+------------------+-------------------+----------------------+--------------------+---------------------+--------------------+-----------------------+---------------------+----------------------+--------------------+
+|         1|0.3874903478880802|0.03176870993205486| 0.03564365980798147|0.010163777411641763|0.12216923882672961|8.678347368918214E-4|  0.05333573041189484|4.027492864946198...|0.031795718931534385|0.15406782406638148|0.5659308896021846|0.13604204854166352|    0.1694745438851981|  0.0758957184319689|  0.36478968028383685| 0.01801303400855076|    0.19330060878603167| 0.009694992914675607|    0.1369270871031265| 0.41796311304575895|
+|         3| 2.055543404306235| 0.9005980973174688| 0.07615420998476337|0.013051679294006573| 0.3061290800973664|0.001756445121336...|   0.6357884938108789| 0.15267827575202492|  1.1710909431368066| 0.5158142151529993|2.0262083845146694| 1.3021577488689922|    0.2940166987056146| 0.10994732118724852|   0.7730773026992429| 0.03444713695821156|       1.14313561428052|   0.4681738279119483|    1.6181515668391468|  1.1036524914692394|
+|         2|0.5337706919649811| 0.3704756930078399|  0.8340733001830738|  0.7823656856569705|0.21538130928274715| 0.25077365406786667|  0.26823430319871194|0.022509728775545718| 0.13216123602046273|0.40359470352600585| 0.874224066393542| 0.7874574266298716|    1.0778815199028737|  0.9885358673293548|   0.5883077049828455|  0.6669563901711506|     0.6466751321312576|  0.16063041177350745|   0.44529125151530735|  0.9255236043233136|
+|         0|1.2646814762440992|0.30280832680686914|0.061178622039477874| 0.01085977067099406| 0.2613736143438124|0.001643955181107296|  0.29922929389751235|0.013839517368880906| 0.32721714549376624|0.36772404224991473|1.1583624977611466| 0.5336389701509058|    0.2251694163431544| 0.07515633454376107|   0.6139180984576125|0.024518367636634054|     0.5675963403164279|  0.08713860285139623|    0.5682254480144624|  0.7650896908195881|
++----------+------------------+-------------------+--------------------+--------------------+-------------------+--------------------+---------------------+--------------------+--------------------+-------------------+------------------+-------------------+----------------------+--------------------+---------------------+--------------------+-----------------------+---------------------+----------------------+--------------------+
+
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+|id_clst|Care_Virtue|Care_Vice|Fairness_Virtue|Fairness_Vice|Loyalty_Virtue|Loyalty_Vice|Authority_Virtue|Authority_Vice|Sanctity_Virtue|Sanctity_Vice|    id|            features|prediction|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+|     22|       0.52|     0.52|            0.0|          0.0|           0.0|         0.0|            0.52|           0.0|            0.0|         0.52| srhry|[-0.9991694206341...|         0|
+|     26|       2.41|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0| u8ury|[-0.1483413335364...|         0|
+|     50|       0.19|      0.0|           0.19|          0.0|          1.36|         0.0|            0.39|           0.0|           0.19|         0.19| vuwba|[-0.9037722267567...|         0|
+|     65|       1.82|      0.0|           0.45|          0.0|           0.0|         0.0|            0.45|           0.0|            0.0|          0.0| wrbko|[-0.9807108098742...|         0|
+|     84|       0.87|     0.44|            0.0|          0.0|          0.87|         0.0|             0.0|           0.0|            0.0|         0.44| z4f4i|[-0.7745808187913...|         0|
+|     94|        0.0|     0.83|            0.0|          0.0|          3.33|         0.0|             0.0|           0.0|            0.0|          0.0|10odbn|[-1.3664887288853...|         0|
+|     98|       0.25|      0.0|            0.0|          0.0|          0.13|        0.13|            0.38|          0.38|           0.38|         0.38|11mzpm|[-1.5691725674820...|         0|
+|    119|       2.17|      0.0|            0.0|          0.0|          1.09|         0.0|             0.0|           0.0|            0.0|          0.0|135dgy|[-0.3531208636586...|         0|
+|    155|       0.09|     0.27|            0.0|          0.0|          0.18|        0.09|            0.55|          0.09|           1.37|         0.09|15sir7|[-1.4431421356071...|         0|
+|    181|       2.42|      0.0|            0.0|          0.0|           0.0|         0.0|            0.81|           0.0|           0.81|          0.0|16uay1|[-0.8683742937451...|         0|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+only showing top 10 rows
+
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+-----+--------------------+----------+
+|id_clst|Care_Virtue|Care_Vice|Fairness_Virtue|Fairness_Vice|Loyalty_Virtue|Loyalty_Vice|Authority_Virtue|Authority_Vice|Sanctity_Virtue|Sanctity_Vice|   id|            features|prediction|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+-----+--------------------+----------+
+|      0|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|hk5r2|           [0.0,0.0]|         1|
+|      7|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|q70xe|           [0.0,0.0]|         1|
+|     19|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|sa2de|           [0.0,0.0]|         1|
+|     25|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|         0.52|tucmd|[-0.2091364779227...|         1|
+|     29|        0.0|      0.0|            0.0|          0.0|           0.0|        0.26|             0.0|           0.0|            0.0|          0.0|ufxst|[-0.8094812069417...|         1|
+|     31|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|            0.51|           0.0|            0.0|          0.0|umfq3|[-0.3159410928903...|         1|
+|     32|        1.1|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|uov5x|[-0.0677076616661...|         1|
+|     34|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|uqxay|           [0.0,0.0]|         1|
+|     43|       0.82|      0.1|            0.0|          0.0|          0.31|         0.0|             0.1|           0.0|            0.0|          0.1|vew4z|[-0.2989071407720...|         1|
+|     54|       0.36|      0.0|            0.0|          0.0|          0.36|         0.0|             0.0|           0.0|           0.36|         0.36|w3d9k|[-0.3361821391093...|         1|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+-----+--------------------+----------+
+only showing top 10 rows
+
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+|id_clst|Care_Virtue|Care_Vice|Fairness_Virtue|Fairness_Vice|Loyalty_Virtue|Loyalty_Vice|Authority_Virtue|Authority_Vice|Sanctity_Virtue|Sanctity_Vice|    id|            features|prediction|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+|   2927|        0.0|      0.0|            3.7|         1.85|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|39ckao|[-8.3822198008521...|         2|
+|  10422|       0.46|      0.0|            0.0|          0.0|          0.46|        0.92|            0.46|           0.0|           0.46|         0.46|8aevo9|[-3.5788508176951...|         2|
+|  15437|       0.68|      0.0|           2.05|          0.0|           0.0|         0.0|             0.0|          0.68|            0.0|          0.0|ad58jl|[-3.8611256577694...|         2|
+|  55671|       0.45|     1.81|            0.9|          0.0|           0.0|         0.0|             0.9|           0.0|            0.0|         0.45|tilzhy|[-3.4632842697265...|         2|
+|   5759|        0.0|      0.0|            0.0|         0.25|          1.02|        0.51|            0.51|           0.0|            0.0|          0.0|5fk9wz|[-2.5864946017099...|         2|
+|  14531|        0.0|      0.0|            0.0|         2.21|          0.74|        2.21|            1.47|           0.0|            0.0|         0.74|a1au1z|[-12.457004718462...|         2|
+|  43199|        0.0|      0.0|           1.67|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|nj4dhe|[-2.1892358630607...|         2|
+|  67639|       0.64|      0.0|           0.64|         2.55|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|z1qmdi|[-5.7465619082294...|         2|
+|   2517|        0.0|     1.72|           0.86|          0.0|           0.0|         0.0|            0.86|           0.0|            0.0|          0.0|317v3h|[-3.1019434062558...|         2|
+|   4551|        0.0|      0.6|           1.19|          0.0|           0.3|         0.0|             0.9|           0.0|            0.0|          0.0|4hdjn6|[-2.6809144847562...|         2|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+only showing top 10 rows
+
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+|id_clst|Care_Virtue|Care_Vice|Fairness_Virtue|Fairness_Vice|Loyalty_Virtue|Loyalty_Vice|Authority_Virtue|Authority_Vice|Sanctity_Virtue|Sanctity_Vice|    id|            features|prediction|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+|   9968|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|           3.92|          0.0|83524v|[-1.0532151212907...|         3|
+|  15194|       6.49|      0.0|            0.0|          0.0|           0.0|         0.0|             1.3|           0.0|            0.0|          0.0|aaa6h9|[-1.2048152073041...|         3|
+|  17971|       3.85|      0.0|            0.0|          0.0|          1.54|         0.0|            0.77|           0.0|           0.77|          0.0|bhirg9|[-1.2310603092427...|         3|
+|  18628|       6.12|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|bqrq69|[-0.3767007933336...|         3|
+|  22129|       3.33|     1.67|            0.0|          0.0|          3.33|         0.0|             0.0|           0.0|            0.0|          0.0|d57ejl|[-2.2755877575503...|         3|
+|  23116|        0.0|      0.0|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|           4.17|          0.0|dnknzx|[-1.1203844516984...|         3|
+|  26486|       2.65|     1.08|            0.1|          0.0|           0.1|         0.0|             0.1|           0.1|           3.24|          0.0|f6qg3v|[-2.3185750674650...|         3|
+|  32912|       3.47|     1.04|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|           0.35|         0.35|ile8ub|[-1.3201682459746...|         3|
+|  38996|       0.98|     0.33|            0.0|         0.33|          0.65|         0.0|            0.33|          0.98|            0.0|          0.0|lnae7n|[-2.9335470652694...|         3|
+|  48280|       6.56|     1.64|            0.0|          0.0|           0.0|         0.0|             0.0|           0.0|            0.0|          0.0|prqbiw|[-1.7785128770453...|         3|
++-------+-----------+---------+---------------+-------------+--------------+------------+----------------+--------------+---------------+-------------+------+--------------------+----------+
+only showing top 10 rows
+
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "id_clst",
+    "type" : "long",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "features",
+    "type" : {
+      "type" : "udt",
+      "class" : "org.apache.spark.ml.linalg.VectorUDT",
+      "pyClass" : "pyspark.ml.linalg.VectorUDT",
+      "sqlType" : {
+        "type" : "struct",
+        "fields" : [ {
+          "name" : "type",
+          "type" : "byte",
+          "nullable" : false,
+          "metadata" : { }
+        }, {
+          "name" : "size",
+          "type" : "integer",
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "indices",
+          "type" : {
+            "type" : "array",
+            "elementType" : "integer",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "values",
+          "type" : {
+            "type" : "array",
+            "elementType" : "double",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        } ]
+      }
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "prediction",
+    "type" : "integer",
+    "nullable" : false,
+    "metadata" : {
+      "ml_attr" : {
+        "type" : "nominal",
+        "num_vals" : 4
+      }
+    }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  required int64 id_clst;
+  optional float Care_Virtue;
+  optional float Care_Vice;
+  optional float Fairness_Virtue;
+  optional float Fairness_Vice;
+  optional float Loyalty_Virtue;
+  optional float Loyalty_Vice;
+  optional float Authority_Virtue;
+  optional float Authority_Vice;
+  optional float Sanctity_Virtue;
+  optional float Sanctity_Vice;
+  optional binary id (STRING);
+  optional group features {
+    required int32 type (INTEGER(8,true));
+    optional int32 size;
+    optional group indices (LIST) {
+      repeated group list {
+        required int32 element;
+      }
+    }
+    optional group values (LIST) {
+      repeated group list {
+        required double element;
+      }
+    }
+  }
+  required int32 prediction;
+}
+
+       
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "id_clst",
+    "type" : "long",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "features",
+    "type" : {
+      "type" : "udt",
+      "class" : "org.apache.spark.ml.linalg.VectorUDT",
+      "pyClass" : "pyspark.ml.linalg.VectorUDT",
+      "sqlType" : {
+        "type" : "struct",
+        "fields" : [ {
+          "name" : "type",
+          "type" : "byte",
+          "nullable" : false,
+          "metadata" : { }
+        }, {
+          "name" : "size",
+          "type" : "integer",
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "indices",
+          "type" : {
+            "type" : "array",
+            "elementType" : "integer",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "values",
+          "type" : {
+            "type" : "array",
+            "elementType" : "double",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        } ]
+      }
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "prediction",
+    "type" : "integer",
+    "nullable" : false,
+    "metadata" : {
+      "ml_attr" : {
+        "type" : "nominal",
+        "num_vals" : 4
+      }
+    }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  required int64 id_clst;
+  optional float Care_Virtue;
+  optional float Care_Vice;
+  optional float Fairness_Virtue;
+  optional float Fairness_Vice;
+  optional float Loyalty_Virtue;
+  optional float Loyalty_Vice;
+  optional float Authority_Virtue;
+  optional float Authority_Vice;
+  optional float Sanctity_Virtue;
+  optional float Sanctity_Vice;
+  optional binary id (STRING);
+  optional group features {
+    required int32 type (INTEGER(8,true));
+    optional int32 size;
+    optional group indices (LIST) {
+      repeated group list {
+        required int32 element;
+      }
+    }
+    optional group values (LIST) {
+      repeated group list {
+        required double element;
+      }
+    }
+  }
+  required int32 prediction;
+}
+
+       
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "id_clst",
+    "type" : "long",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "features",
+    "type" : {
+      "type" : "udt",
+      "class" : "org.apache.spark.ml.linalg.VectorUDT",
+      "pyClass" : "pyspark.ml.linalg.VectorUDT",
+      "sqlType" : {
+        "type" : "struct",
+        "fields" : [ {
+          "name" : "type",
+          "type" : "byte",
+          "nullable" : false,
+          "metadata" : { }
+        }, {
+          "name" : "size",
+          "type" : "integer",
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "indices",
+          "type" : {
+            "type" : "array",
+            "elementType" : "integer",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "values",
+          "type" : {
+            "type" : "array",
+            "elementType" : "double",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        } ]
+      }
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "prediction",
+    "type" : "integer",
+    "nullable" : false,
+    "metadata" : {
+      "ml_attr" : {
+        "type" : "nominal",
+        "num_vals" : 4
+      }
+    }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  required int64 id_clst;
+  optional float Care_Virtue;
+  optional float Care_Vice;
+  optional float Fairness_Virtue;
+  optional float Fairness_Vice;
+  optional float Loyalty_Virtue;
+  optional float Loyalty_Vice;
+  optional float Authority_Virtue;
+  optional float Authority_Vice;
+  optional float Sanctity_Virtue;
+  optional float Sanctity_Vice;
+  optional binary id (STRING);
+  optional group features {
+    required int32 type (INTEGER(8,true));
+    optional int32 size;
+    optional group indices (LIST) {
+      repeated group list {
+        required int32 element;
+      }
+    }
+    optional group values (LIST) {
+      repeated group list {
+        required double element;
+      }
+    }
+  }
+  required int32 prediction;
+}
+
+       
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "id_clst",
+    "type" : "long",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "features",
+    "type" : {
+      "type" : "udt",
+      "class" : "org.apache.spark.ml.linalg.VectorUDT",
+      "pyClass" : "pyspark.ml.linalg.VectorUDT",
+      "sqlType" : {
+        "type" : "struct",
+        "fields" : [ {
+          "name" : "type",
+          "type" : "byte",
+          "nullable" : false,
+          "metadata" : { }
+        }, {
+          "name" : "size",
+          "type" : "integer",
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "indices",
+          "type" : {
+            "type" : "array",
+            "elementType" : "integer",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "values",
+          "type" : {
+            "type" : "array",
+            "elementType" : "double",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        } ]
+      }
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "prediction",
+    "type" : "integer",
+    "nullable" : false,
+    "metadata" : {
+      "ml_attr" : {
+        "type" : "nominal",
+        "num_vals" : 4
+      }
+    }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  required int64 id_clst;
+  optional float Care_Virtue;
+  optional float Care_Vice;
+  optional float Fairness_Virtue;
+  optional float Fairness_Vice;
+  optional float Loyalty_Virtue;
+  optional float Loyalty_Vice;
+  optional float Authority_Virtue;
+  optional float Authority_Vice;
+  optional float Sanctity_Virtue;
+  optional float Sanctity_Vice;
+  optional binary id (STRING);
+  optional group features {
+    required int32 type (INTEGER(8,true));
+    optional int32 size;
+    optional group indices (LIST) {
+      repeated group list {
+        required int32 element;
+      }
+    }
+    optional group values (LIST) {
+      repeated group list {
+        required double element;
+      }
+    }
+  }
+  required int32 prediction;
+}
+
+       
+Parquet page size to 1048576
+Parquet dictionary page size to 1048576
+Dictionary is true
+Writer version is: PARQUET_1_0
+Page size checking is: estimated
+Min row count for page size check is: 100
+Max row count for page size check is: 10000
+Truncate length for column indexes is: 64
+Truncate length for statistics min/max  is: 2147483647
+Bloom filter enabled: false
+Max Bloom filter size for a column is 1048576
+Bloom filter expected number of distinct values are: null
+Page row count limit to 20000
+Writing page checksums is: on
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "id_clst",
+    "type" : "long",
+    "nullable" : false,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Care_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Fairness_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Loyalty_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Authority_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Virtue",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Sanctity_Vice",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "features",
+    "type" : {
+      "type" : "udt",
+      "class" : "org.apache.spark.ml.linalg.VectorUDT",
+      "pyClass" : "pyspark.ml.linalg.VectorUDT",
+      "sqlType" : {
+        "type" : "struct",
+        "fields" : [ {
+          "name" : "type",
+          "type" : "byte",
+          "nullable" : false,
+          "metadata" : { }
+        }, {
+          "name" : "size",
+          "type" : "integer",
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "indices",
+          "type" : {
+            "type" : "array",
+            "elementType" : "integer",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        }, {
+          "name" : "values",
+          "type" : {
+            "type" : "array",
+            "elementType" : "double",
+            "containsNull" : false
+          },
+          "nullable" : true,
+          "metadata" : { }
+        } ]
+      }
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "prediction",
+    "type" : "integer",
+    "nullable" : false,
+    "metadata" : {
+      "ml_attr" : {
+        "type" : "nominal",
+        "num_vals" : 4
+      }
+    }
+  } ]
+}
+and corresponding Parquet message type:
+message spark_schema {
+  required int64 id_clst;
+  optional float Care_Virtue;
+  optional float Care_Vice;
+  optional float Fairness_Virtue;
+  optional float Fairness_Vice;
+  optional float Loyalty_Virtue;
+  optional float Loyalty_Vice;
+  optional float Authority_Virtue;
+  optional float Authority_Vice;
+  optional float Sanctity_Virtue;
+  optional float Sanctity_Vice;
+  optional binary id (STRING);
+  optional group features {
+    required int32 type (INTEGER(8,true));
+    optional int32 size;
+    optional group indices (LIST) {
+      repeated group list {
+        required int32 element;
+      }
+    }
+    optional group values (LIST) {
+      repeated group list {
+        required double element;
+      }
+    }
+  }
+  required int32 prediction;
+}
+
+       
