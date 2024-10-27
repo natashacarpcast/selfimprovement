@@ -23,7 +23,7 @@ only showing top 10 rows
 [rdd_33_0]
 [rdd_33_0]
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.6725240562947522 when using PCA and 2 k clusters
+Silhouette with squared euclidean distance = 0.6725240562947519 when using PCA and 2 k clusters
 Predictions corresponding to PCA and 2 k clusters
 +----------+------+
 |prediction| count|
@@ -33,7 +33,7 @@ Predictions corresponding to PCA and 2 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.6827288531313035 when using PCA and 3 k clusters
+Silhouette with squared euclidean distance = 0.6827288531313032 when using PCA and 3 k clusters
 Predictions corresponding to PCA and 3 k clusters
 +----------+------+
 |prediction| count|
@@ -44,7 +44,7 @@ Predictions corresponding to PCA and 3 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.6982010280115917 when using PCA and 4 k clusters
+Silhouette with squared euclidean distance = 0.6982010280115912 when using PCA and 4 k clusters
 Predictions corresponding to PCA and 4 k clusters
 +----------+------+
 |prediction| count|
@@ -56,7 +56,7 @@ Predictions corresponding to PCA and 4 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.6018370656969022 when using PCA and 5 k clusters
+Silhouette with squared euclidean distance = 0.601837065696902 when using PCA and 5 k clusters
 Predictions corresponding to PCA and 5 k clusters
 +----------+------+
 |prediction| count|
@@ -69,7 +69,7 @@ Predictions corresponding to PCA and 5 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.6055602053465634 when using PCA and 6 k clusters
+Silhouette with squared euclidean distance = 0.6055602053465641 when using PCA and 6 k clusters
 Predictions corresponding to PCA and 6 k clusters
 +----------+------+
 |prediction| count|
@@ -83,7 +83,7 @@ Predictions corresponding to PCA and 6 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.5840427273348305 when using PCA and 7 k clusters
+Silhouette with squared euclidean distance = 0.5840427273348323 when using PCA and 7 k clusters
 Predictions corresponding to PCA and 7 k clusters
 +----------+------+
 |prediction| count|
@@ -98,7 +98,7 @@ Predictions corresponding to PCA and 7 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.5818779450390331 when using PCA and 8 k clusters
+Silhouette with squared euclidean distance = 0.5818779450390346 when using PCA and 8 k clusters
 Predictions corresponding to PCA and 8 k clusters
 +----------+------+
 |prediction| count|
@@ -114,7 +114,7 @@ Predictions corresponding to PCA and 8 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.5843810257103571 when using PCA and 9 k clusters
+Silhouette with squared euclidean distance = 0.5843810257103582 when using PCA and 9 k clusters
 Predictions corresponding to PCA and 9 k clusters
 +----------+------+
 |prediction| count|
@@ -131,7 +131,7 @@ Predictions corresponding to PCA and 9 k clusters
 +----------+------+
 
 [rdd_65_0]
-Silhouette with squared euclidean distance = 0.5839795244529409 when using PCA and 10 k clusters
+Silhouette with squared euclidean distance = 0.5839795244529408 when using PCA and 10 k clusters
 Predictions corresponding to PCA and 10 k clusters
 +----------+------+
 |prediction| count|
@@ -149,7 +149,7 @@ Predictions corresponding to PCA and 10 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.4150212309393545 when using SVD and 2 k clusters
+Silhouette with squared euclidean distance = 0.41502123093935395 when using SVD and 2 k clusters
 Predictions corresponding to SVD and 2 k clusters
 +----------+------+
 |prediction| count|
@@ -159,7 +159,7 @@ Predictions corresponding to SVD and 2 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.6612835949028264 when using SVD and 3 k clusters
+Silhouette with squared euclidean distance = 0.6612835949028262 when using SVD and 3 k clusters
 Predictions corresponding to SVD and 3 k clusters
 +----------+------+
 |prediction| count|
@@ -182,7 +182,7 @@ Predictions corresponding to SVD and 4 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.6337051210480704 when using SVD and 5 k clusters
+Silhouette with squared euclidean distance = 0.6337051210480702 when using SVD and 5 k clusters
 Predictions corresponding to SVD and 5 k clusters
 +----------+------+
 |prediction| count|
@@ -195,7 +195,7 @@ Predictions corresponding to SVD and 5 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.5804268800114695 when using SVD and 6 k clusters
+Silhouette with squared euclidean distance = 0.5804268800114698 when using SVD and 6 k clusters
 Predictions corresponding to SVD and 6 k clusters
 +----------+------+
 |prediction| count|
@@ -209,7 +209,7 @@ Predictions corresponding to SVD and 6 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.5779883405360232 when using SVD and 7 k clusters
+Silhouette with squared euclidean distance = 0.5779883405360234 when using SVD and 7 k clusters
 Predictions corresponding to SVD and 7 k clusters
 +----------+------+
 |prediction| count|
@@ -224,7 +224,7 @@ Predictions corresponding to SVD and 7 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.5713672001868458 when using SVD and 8 k clusters
+Silhouette with squared euclidean distance = 0.571367200186846 when using SVD and 8 k clusters
 Predictions corresponding to SVD and 8 k clusters
 +----------+------+
 |prediction| count|
@@ -240,7 +240,7 @@ Predictions corresponding to SVD and 8 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.5735605416070223 when using SVD and 9 k clusters
+Silhouette with squared euclidean distance = 0.5735605416070221 when using SVD and 9 k clusters
 Predictions corresponding to SVD and 9 k clusters
 +----------+------+
 |prediction| count|
@@ -257,7 +257,7 @@ Predictions corresponding to SVD and 9 k clusters
 +----------+------+
 
 [rdd_1013_0]
-Silhouette with squared euclidean distance = 0.5848265067943271 when using SVD and 10 k clusters
+Silhouette with squared euclidean distance = 0.584826506794327 when using SVD and 10 k clusters
 Predictions corresponding to SVD and 10 k clusters
 +----------+------+
 |prediction| count|
