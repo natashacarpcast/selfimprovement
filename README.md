@@ -28,7 +28,7 @@ Inside the [lab2_clustering folder](lab2_clustering), files should be viewed in 
 
 ### Lab 3 - Association Rules Mining
 
-1- [Association Rules Mining notebook](lab3_association_rules/association.ipynb) : This notebook explores looking at associations between morality language scores and emotional language scores. For the morality language scores, different dimensions of moral values are included. For the emotional language scores: positive emotion, anxiety, sad and anger language are included. 
+1- [Association Rules Mining notebook](lab3_association_rules/association.ipynb) : This notebook explores looking at associations between morality language scores and emotional language scores, using the FP Growth algorithm on a Spark environment. For the morality language scores, different dimensions of moral values are included: care, authority, loyalty, sanctity and fairness. For the emotional language scores: positive emotion, anxiety, sad and anger language are included. 
 
 2- [Parquet files with cluster's assignations from lab 2](lab3_association_rules/data_and_predictions)
 
