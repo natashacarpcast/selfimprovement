@@ -26,4 +26,8 @@ Inside the [lab2_clustering folder](lab2_clustering), files should be viewed in 
 
 4 - The [top-n-words notebook](lab2_clustering/top-n-words.ipynb) looks at the top 100 words in each cluster. 
 
+### Lab 3 - Association Rules Mining
+
+
+
 
