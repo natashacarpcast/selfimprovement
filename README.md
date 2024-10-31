@@ -28,6 +28,10 @@ Inside the [lab2_clustering folder](lab2_clustering), files should be viewed in 
 
 ### Lab 3 - Association Rules Mining
 
+1- [Association Rules Mining notebook](lab3_association_rules/association.ipynb)
+
+2- [Parquet files with cluster's assignations from lab 2](lab3_association_rules/data_and_predictions)
+
 
 
 
