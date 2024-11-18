@@ -270,22 +270,18 @@ best_log_likelihood = -1000
 for param_map in paramGrid:
     model = lda.copy(param_map).fit(tfidf_result)
     log_likelihood, perplexity = evaluate_model(model, tfidf_result)
-    best_log_likelihood = (f"Params: {param_map}, Log Likelihood: {log_likelihood}")
     print(f"Params: {param_map}, Log Likelihood: {log_likelihood}, Perplexity: {perplexity}")
     if perplexity < best_perplexity: 
-        best_perplexity = perplexity, param_map
+        best_perplexity = perplexity
+        best_param_map_pxty = param_map
     if log_likelihood > best_log_likelihood: 
-        best_log_likelihood = log_likelihood, param_map
+        best_log_likelihood = log_likelihood
+        best_param_map_ll = param_map
 
-
-#Unpack results from best scores
-best_perplexity_score, best_param_map_pxty = best_perplexity
 print("Best parameters for perplexity")
 print(best_param_map_pxty)
-print(best_perplexity_score)
+print(best_perplexity)
 print("------------------------------------------")
-
-best_log_likelihood_score, best_param_map_ll = best_log_likelihood
 print("Best parameters for log likelihood")
 print(best_param_map_ll)
-print(best_log_likelihood_score)
+print(best_log_likelihood)
