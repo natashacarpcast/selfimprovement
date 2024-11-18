@@ -253,7 +253,7 @@ idf_model = idfizer.fit(tf_result)
 tfidf_result = idf_model.transform(tf_result)
 
 #LDA
-lda = LDA(seed=2503)
+lda = LDA(seed=2503, featuresCol='tf_idf_features')
 
 paramGrid = ParamGridBuilder() \
     .addGrid(lda.k, [5, 8]) \
