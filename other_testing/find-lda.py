@@ -266,7 +266,7 @@ def evaluate_model(model, data):
     return log_likelihood, perplexity
 
 best_perplexity = 100
-best_log_likelihood = -1000
+best_log_likelihood = -99999999999
 best_param_map_ll = None
 best_param_map_pxty = None
 
