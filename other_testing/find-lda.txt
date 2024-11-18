@@ -6,13 +6,16 @@
 [rdd_74_0]
 [rdd_74_0]
 [rdd_74_0]
-[rdd_74_3]
-[rdd_74_4]
-[rdd_74_1]
-[rdd_74_2]
 [rdd_74_0]
 [rdd_74_0]
-Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 5, Param(parent='LDA_0552163faa74', name='maxIter', doc='max number of iterations (>= 0).'): 10}, Log Likelihood: -447311.14019821567, Perplexity: 6.731494026939568
+[rdd_74_0]
+Params: {Param(parent='LDA_6a7a2ae627f7', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 5, Param(parent='LDA_6a7a2ae627f7', name='maxIter', doc='max number of iterations (>= 0).'): 10}, Log Likelihood: -452186.3396720363, Perplexity: 6.8647872543231765
+[rdd_148_0]
+[rdd_148_0]
+[rdd_148_0]
+[rdd_148_0]
+[rdd_148_0]
+[rdd_148_0]
 [rdd_148_0]
 [rdd_148_0]
 [rdd_148_0]
@@ -23,16 +26,7 @@ Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (c
 [rdd_148_0]
 [rdd_148_2]
 [rdd_148_4]
-[rdd_148_1]
 [rdd_148_3]
-[rdd_148_0]
-[rdd_148_0]
-[rdd_148_0]
-[rdd_148_0]
-[rdd_148_0]
-[rdd_148_2]
-[rdd_148_3]
-[rdd_148_4]
 [rdd_148_1]
 [rdd_148_0]
 [rdd_148_0]
@@ -40,7 +34,7 @@ Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (c
 [rdd_148_0]
 [rdd_148_0]
 [rdd_148_0]
-Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 5, Param(parent='LDA_0552163faa74', name='maxIter', doc='max number of iterations (>= 0).'): 20}, Log Likelihood: -442018.826484737, Perplexity: 6.651851078330721
+Params: {Param(parent='LDA_6a7a2ae627f7', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 5, Param(parent='LDA_6a7a2ae627f7', name='maxIter', doc='max number of iterations (>= 0).'): 20}, Log Likelihood: -446527.627022605, Perplexity: 6.778880505127994
 [rdd_252_0]
 [rdd_252_0]
 [rdd_252_0]
@@ -49,13 +43,10 @@ Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (c
 [rdd_252_0]
 [rdd_252_0]
 [rdd_252_0]
-[rdd_252_2]
-[rdd_252_3]
-[rdd_252_1]
-[rdd_252_4]
 [rdd_252_0]
 [rdd_252_0]
-Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 8, Param(parent='LDA_0552163faa74', name='maxIter', doc='max number of iterations (>= 0).'): 10}, Log Likelihood: -450564.99426021485, Perplexity: 6.780460612420034
+[rdd_252_0]
+Params: {Param(parent='LDA_6a7a2ae627f7', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 8, Param(parent='LDA_6a7a2ae627f7', name='maxIter', doc='max number of iterations (>= 0).'): 10}, Log Likelihood: -455920.8479176815, Perplexity: 6.921482033348266
 [rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
@@ -64,10 +55,7 @@ Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (c
 [rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
-[rdd_326_3]
-[rdd_326_1]
-[rdd_326_2]
-[rdd_326_4]
+[rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
@@ -75,19 +63,19 @@ Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (c
 [rdd_326_0]
 [rdd_326_1]
 [rdd_326_4]
-[rdd_326_2]
 [rdd_326_3]
+[rdd_326_2]
 [rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
 [rdd_326_0]
-Params: {Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 8, Param(parent='LDA_0552163faa74', name='maxIter', doc='max number of iterations (>= 0).'): 20}, Log Likelihood: -443856.45219178445, Perplexity: 6.679505132431092
+Params: {Param(parent='LDA_6a7a2ae627f7', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 8, Param(parent='LDA_6a7a2ae627f7', name='maxIter', doc='max number of iterations (>= 0).'): 20}, Log Likelihood: -448682.5577465537, Perplexity: 6.811595206280712
 Best parameters for perplexity
-{Param(parent='LDA_0552163faa74', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 5, Param(parent='LDA_0552163faa74', name='maxIter', doc='max number of iterations (>= 0).'): 20}
-6.651851078330721
+{Param(parent='LDA_6a7a2ae627f7', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 5, Param(parent='LDA_6a7a2ae627f7', name='maxIter', doc='max number of iterations (>= 0).'): 20}
+6.778880505127994
 ------------------------------------------
 Best parameters for log likelihood
-None
--1000
+{Param(parent='LDA_6a7a2ae627f7', name='k', doc='The number of topics (clusters) to infer. Must be > 1.'): 5, Param(parent='LDA_6a7a2ae627f7', name='maxIter', doc='max number of iterations (>= 0).'): 20}
+-446527.627022605
