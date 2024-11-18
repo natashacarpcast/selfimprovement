@@ -267,6 +267,9 @@ def evaluate_model(model, data):
 
 best_perplexity = 100
 best_log_likelihood = -1000
+best_param_map_ll = None
+best_param_map_pxty = None
+
 for param_map in paramGrid:
     model = lda.copy(param_map).fit(tfidf_result)
     log_likelihood, perplexity = evaluate_model(model, tfidf_result)
