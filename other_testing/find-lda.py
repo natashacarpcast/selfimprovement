@@ -175,7 +175,7 @@ final_data = last_pipeline.fit(processed_data).transform(processed_data)
 
 ## Vectorization
 #Apply TF-IDF filtering
-tfizer = CountVectorizer(inputCol='finished_final', outputCol='tf_features', minDF=0.01, maxDF=0.80)
+tfizer = CountVectorizer(inputCol='finished_final', outputCol='tf_features', minDF=0.01, maxDF=0.80, vocabSize= 20000)
 tf_model = tfizer.fit(final_data)
 tf_result = tf_model.transform(final_data)
 
@@ -188,9 +188,9 @@ lda = LDA(featuresCol='tf_idf_features', seed=2503)
 
 paramGrid = ParamGridBuilder() \
     .addGrid(lda.k, [5,6,7,8,9,10,13,15]) \
-    .addGrid(lda.maxIter, [20,50,100,150,200,250,500]) \
+    .addGrid(lda.maxIter, [20,50,100,150]) \
     .addGrid(lda.learningDecay, [0.5, 0.75, 1]) \
-    .addGrid(lda.topicConcentration, [0.1, 0.5, 2.5, 5, 7.5, 10]) \
+    .addGrid(lda.topicConcentration, [0.1, 5, 10]) \
     .addGrid(lda.learningOffset, [50, 75, 100]) \
     .build()
 
