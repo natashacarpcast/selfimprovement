@@ -187,7 +187,7 @@ tfidf_result = idf_model.transform(tf_result)
 lda = LDA(featuresCol='tf_idf_features', seed=2503)
 
 paramGrid = ParamGridBuilder() \
-    .addGrid(lda.k, [5,6,7,8,9,10,13,15]) \
+    .addGrid(lda.k, [5,8,10,13,15]) \
     .addGrid(lda.maxIter, [20,50,100,150]) \
     .addGrid(lda.learningDecay, [0.5, 0.75, 1]) \
     .addGrid(lda.topicConcentration, [0.1, 5, 10]) \
