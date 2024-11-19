@@ -16,10 +16,7 @@ from pyspark.ml.tuning import ParamGridBuilder
 
 spark = sparknlp.start()
 
-og_data = spark.read.csv("../data_topicmodel.csv", header= True).select(["id", "cleaned_text"])
-
-#Remove sample
-sample_data = og_data.sample(0.001)
+data = spark.read.csv("../data_topicmodel.csv", header= True).select(["id", "cleaned_text"])
 
 #Preprocessing
 documentAssembler = DocumentAssembler()\
@@ -126,8 +123,8 @@ my_pipeline = Pipeline(
           finisher
       ])
 
-pipelineModel = my_pipeline.fit(sample_data)
-processed_data = pipelineModel.transform(sample_data)
+pipelineModel = my_pipeline.fit(data)
+processed_data = pipelineModel.transform(data)
 
 #Filter by POS
 def filter_unigrams(finished_unigrams, finished_pos):
@@ -189,21 +186,12 @@ tfidf_result = idf_model.transform(tf_result)
 ## LDA
 lda = LDA(featuresCol='tf_idf_features', seed=2503)
 
-'''
-ONE TO USE AFTER SCALING
 paramGrid = ParamGridBuilder() \
     .addGrid(lda.k, [5,6,7,8,9,10,13,15]) \
-    .addGrid(lda.maxIter, [20,50,100,150,200,250,500,1000]) \
+    .addGrid(lda.maxIter, [20,50,100,150,200,250,500]) \
     .addGrid(lda.learningDecay, [0.5, 0.75, 1]) \
     .addGrid(lda.topicConcentration, [0.1, 0.5, 2.5, 5, 7.5, 10]) \
-    .build()
-'''
-
-paramGrid = ParamGridBuilder() \
-    .addGrid(lda.k, [5,6,7]) \
-    .addGrid(lda.maxIter, [20,50]) \
-    .addGrid(lda.learningDecay, [0.5, 1]) \
-    .addGrid(lda.topicConcentration, [0.1, 10]) \
+    .addGrid(lda.learningOffset, [50, 75, 100]) \
     .build()
 
 def evaluate_model(model, data):
