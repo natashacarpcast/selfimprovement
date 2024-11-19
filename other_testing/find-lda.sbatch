@@ -3,6 +3,7 @@
 #SBATCH --job-name=find-lda
 #SBATCH --output=find-lda.out
 #SBATCH --error=find-lda.err
+#SBATCH --time=05:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=30
 #SBATCH --mem=32G
