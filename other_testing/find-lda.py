@@ -16,12 +16,12 @@ from pyspark.ml.tuning import ParamGridBuilder
 
 spark = sparknlp.start()
 
-#Load data
-data = spark.read.csv("../data_topicmodel.csv", header= True).select(["id", "cleaned_text"])
-#Remove sample and do it with entire dataset
-data = data.sample(0.001)
+og_data = spark.read.csv("../data_topicmodel.csv", header= True).select(["id", "cleaned_text"])
 
-#Preprocessing pipeline
+#Remove sample
+sample_data = og_data.sample(0.001)
+
+#Preprocessing
 documentAssembler = DocumentAssembler()\
      .setInputCol("cleaned_text")\
      .setOutputCol('document')
@@ -34,7 +34,6 @@ normalizer = Normalizer() \
      .setInputCols(['tokenized']) \
      .setOutputCol('normalized') 
 
-#Stop words 
 english = [
     "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "as", "at", "be", 
     "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "cannot", "could", "did", 
@@ -79,7 +78,7 @@ english = [
         "whys", "wont", "wouldve", "wouldnt", "youd", "youll", "youre", "youve",
         "f", "m", "because", "go", "lot", "get", "still", "way", "something", "much",
         "thing", "someone", "person", "anything", "goes", "ok", "so", "just", "mostly", 
-        "put", "also", "lots", "yet"]
+        "put", "also", "lots", "yet", "ha", "etc"]
 
 time = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", 
         "sunday", "morning", "noon", "afternoon", "evening", "night", "midnight",
@@ -101,7 +100,7 @@ topic_specific = ["self", "improvement", "change", "action",
     'bit', 'experience', 'different',
     'point', 'situation', 'negative', 'control', 'positive',
     'use', 'question', 'idea', 'amp', 'medium', 'hour', 'day', 'minute',
-    'aaaaloot']
+    'aaaaloot', "selfimprovement", "_"]
 
 stopwords = english + time + reddit + topic_specific
 
@@ -110,18 +109,11 @@ stopwords_cleaner = StopWordsCleaner() \
      .setOutputCol('unigrams') \
      .setStopWords(stopwords)
 
-ngrammer = NGramGenerator() \
-    .setInputCols(['normalized']) \
-    .setOutputCol('ngrams') \
-    .setN(3) \
-    .setEnableCumulative(True) \
-    .setDelimiter('_')
-
 pos = PerceptronModel.load("/project/macs40123/spark-jars/pos_anc_en_3.0.0_3.0_1614962126490/")\
       .setInputCols("document", "unigrams")\
       .setOutputCol("pos")
 
-finisher = Finisher().setInputCols(['unigrams', 'ngrams', 'pos'])
+finisher = Finisher().setInputCols(['unigrams', 'pos'])
 
 my_pipeline = Pipeline(
       stages = [
@@ -129,47 +121,15 @@ my_pipeline = Pipeline(
           tokenizer,
           normalizer,
           stopwords_cleaner,
-          ngrammer,
+          #ngrammer,
           pos,
           finisher
       ])
 
-pipelineModel = my_pipeline.fit(data)
-processed_data = pipelineModel.transform(data)
+pipelineModel = my_pipeline.fit(sample_data)
+processed_data = pipelineModel.transform(sample_data)
 
-#New pipeline for matching words with n grams 
-
-#Merge POS tags as just one string to be able to take it as a document in the Spark NLP Pipeline
-pos_as_string = F.udf(lambda x: ' '.join(x), T.StringType())
-processed_data = processed_data.withColumn('finished_pos', pos_as_string(F.col('finished_pos')))
-
-pos_documentAssembler = DocumentAssembler() \
-     .setInputCol('finished_pos') \
-     .setOutputCol('pos_document')
-
-pos_tokenizer = Tokenizer() \
-     .setInputCols(['pos_document']) \
-     .setOutputCol('pos')
-     
-    
-pos_ngrammer = NGramGenerator() \
-    .setInputCols(['pos']) \
-    .setOutputCol('pos_ngrams') \
-    .setN(3) \
-    .setEnableCumulative(True) \
-    .setDelimiter('_')
-
-pos_finisher = Finisher() \
-     .setInputCols(['pos', 'pos_ngrams']) \
-
-pos_pipeline = Pipeline() \
-     .setStages([pos_documentAssembler,                  
-                 pos_tokenizer,
-                 pos_ngrammer,  
-                 pos_finisher])
-
-processed_data = pos_pipeline.fit(processed_data).transform(processed_data)
-
+#Filter by POS
 def filter_unigrams(finished_unigrams, finished_pos):
     '''Filters individual words based on their POS tag'''
     return [word for word, pos in zip(finished_unigrams, finished_pos)
@@ -181,26 +141,9 @@ processed_data = processed_data.withColumn('filtered_unigrams_by_pos', udf_filte
                                                    F.col('finished_unigrams'),
                                                    F.col('finished_pos')))
 
-def filter_pos_ngrams(finished_ngrams, finished_pos_tags):
-    return [word for word, pos in zip(finished_ngrams, finished_pos_tags) 
-            if (len(pos.split('_')) == 2 and \
-                pos.split('_')[0] in ['JJ', 'NN', 'NNS', 'VB', 'VBP'] and \
-                 pos.split('_')[1] in ['JJ', 'NN', 'NNS'])
-            or (len(pos.split('_')) == 3 and \
-                pos.split('_')[0] in ['JJ', 'NN', 'NNS', 'VB', 'VBP'] and \
-                 pos.split('_')[1] in ['JJ', 'NN', 'NNS', 'VB', 'VBP'] and \
-                  pos.split('_')[2] in ['NN', 'NNS'])]
-    
-udf_filter_pos_ngrams = F.udf(filter_pos_ngrams, T.ArrayType(T.StringType()))
-
-processed_data = processed_data.withColumn('filtered_ngrams_by_pos',
-                       udf_filter_pos_ngrams(F.col('finished_ngrams'),
-                                             F.col('finished_pos_ngrams')))
-
 #Now that POS was done, lemmatization makes more sense at this point
 
 #Merge tokens as just one string to be able to take it as a document in the new Pipeline
-from pyspark.sql import functions as F
 tokens_as_string = F.udf(lambda x: ' '.join(x), T.StringType())
 processed_data = processed_data.withColumn('joined_tokens', tokens_as_string(F.col('filtered_unigrams_by_pos')))
 
@@ -216,35 +159,26 @@ lemmatizer = LemmatizerModel.load("../models/lemma_ewt_en_3.4.3_3.0_165141665539
       .setInputCols("tokenized")\
       .setOutputCol("lemmatized")
 
-#Delete these tokens that remained from the lemmatizer model and topic's n grams
-last_stopwords = ["_", "self_improvement"]
-
-last_stopwords_cleaner1 = StopWordsCleaner() \
+stopwords_cleaner = StopWordsCleaner() \
      .setInputCols(['lemmatized']) \
-     .setOutputCol('cleaned_unigrams') \
-     .setStopWords(last_stopwords)
+     .setOutputCol('final') \
+     .setStopWords(stopwords)
 
 last_finisher = Finisher() \
-     .setInputCols(['cleaned_unigrams']) \
+     .setInputCols(['final']) \
 
 last_pipeline = Pipeline() \
      .setStages([last_documentAssembler,                  
                  last_tokenizer,
                  lemmatizer,
-                 last_stopwords_cleaner1,
+                 stopwords_cleaner,
                  last_finisher])
 
 final_data = last_pipeline.fit(processed_data).transform(processed_data)
 
-from pyspark.sql.functions import concat
-final_data = final_data.withColumn('final', concat(F.col('finished_cleaned_unigrams'), \
-                                                   F.col('filtered_ngrams_by_pos')))\
-                                                   .select('id','cleaned_text','final')
-                                                                                            
-#Vectorization
-
+## Vectorization
 #Apply TF-IDF filtering
-tfizer = CountVectorizer(inputCol='final', outputCol='tf_features', minDF=0.01, maxDF=0.80)
+tfizer = CountVectorizer(inputCol='finished_final', outputCol='tf_features', minDF=0.01, maxDF=0.80)
 tf_model = tfizer.fit(final_data)
 tf_result = tf_model.transform(final_data)
 
@@ -252,8 +186,8 @@ idfizer = IDF(inputCol='tf_features', outputCol='tf_idf_features')
 idf_model = idfizer.fit(tf_result)
 tfidf_result = idf_model.transform(tf_result)
 
-#LDA
-lda = LDA(seed=2503, featuresCol='tf_idf_features')
+## LDA
+lda = LDA(featuresCol='tf_idf_features', seed=2503)
 
 paramGrid = ParamGridBuilder() \
     .addGrid(lda.k, [5, 8]) \
