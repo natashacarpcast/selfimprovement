@@ -125,6 +125,7 @@ my_pipeline = Pipeline(
 
 pipelineModel = my_pipeline.fit(data)
 processed_data = pipelineModel.transform(data)
+processed_data.persist()
 
 #Filter by POS
 def filter_unigrams(finished_unigrams, finished_pos):
@@ -173,9 +174,12 @@ last_pipeline = Pipeline() \
 
 final_data = last_pipeline.fit(processed_data).transform(processed_data)
 
+processed_data.unpersist()
+final_data.persist()
+
 ## Vectorization
 #Apply TF-IDF filtering
-tfizer = CountVectorizer(inputCol='finished_final', outputCol='tf_features', minDF=0.01, maxDF=0.80, vocabSize= 20000)
+tfizer = CountVectorizer(inputCol='finished_final', outputCol='tf_features', minDF=0.01, maxDF=0.80, vocabSize= 2000)
 tf_model = tfizer.fit(final_data)
 tf_result = tf_model.transform(final_data)
 
@@ -183,14 +187,16 @@ idfizer = IDF(inputCol='tf_features', outputCol='tf_idf_features')
 idf_model = idfizer.fit(tf_result)
 tfidf_result = idf_model.transform(tf_result)
 
+final_data.unpersist()
+tfidf_result.persist()
+
 ## LDA
 lda = LDA(featuresCol='tf_idf_features', seed=2503)
 
 paramGrid = ParamGridBuilder() \
     .addGrid(lda.k, [5,8,10,13,15]) \
-    .addGrid(lda.maxIter, [20,100,150]) \
+    .addGrid(lda.maxIter, [20, 50]) \
     .addGrid(lda.learningDecay, [0.5, 0.75, 1]) \
-    .addGrid(lda.topicConcentration, [0.1, 5, 10]) \
     .addGrid(lda.learningOffset, [50, 75, 100]) \
     .build()
 
