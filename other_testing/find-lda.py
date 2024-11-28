@@ -16,7 +16,7 @@ from pyspark.ml.tuning import ParamGridBuilder
 
 spark = sparknlp.start()
 
-data = spark.read.csv("../data_topicmodel.csv", header= True).select(["id", "cleaned_text"])
+data = spark.read.csv("../cleaned_moral_scores.csv", header= True).select(["id", "cleaned_text"])
 
 #Preprocessing
 documentAssembler = DocumentAssembler()\
@@ -87,7 +87,7 @@ time = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
 
 reddit = ["welcome", "hi", "hello", "sub", "reddit", "thanks", "thank", "maybe",
           "wo30", "mods", "mod", "moderators", "subreddit", "btw", "aw", "aww", 
-          "aww", "hey", "hello", "join", "joined", "post", "rselfimprovement"]
+          "aww", "hey", "hello", "join", "joined", "post", "rselfimprovement", "op"]
 
 topic_specific = ["self", "improvement", "change", "action",
     'change', 'start', 'goal', 'habit', 'new', 'old', 
@@ -97,7 +97,7 @@ topic_specific = ["self", "improvement", "change", "action",
     'bit', 'experience', 'different',
     'point', 'situation', 'negative', 'control', 'positive',
     'use', 'question', 'idea', 'amp', 'medium', 'hour', 'day', 'minute',
-    'aaaaloot', "selfimprovement", "_"]
+    'aaaaloot', "selfimprovement", "_", "ampxb"]
 
 stopwords = english + time + reddit + topic_specific
 
@@ -191,13 +191,11 @@ final_data.unpersist()
 tfidf_result.persist()
 
 ## LDA
-lda = LDA(featuresCol='tf_idf_features', seed=2503)
+lda = LDA(featuresCol='tf_idf_features', maxIter=50, learningDecay=0.5, learningOffset= 50,seed=2503)
 
 paramGrid = ParamGridBuilder() \
-    .addGrid(lda.k, [5,8,10,13,15]) \
-    .addGrid(lda.maxIter, [20, 50]) \
-    .addGrid(lda.learningDecay, [0.5, 0.75, 1]) \
-    .addGrid(lda.learningOffset, [50, 75, 100]) \
+    .addGrid(lda.k, [8,9,10,11,12,13,14,15]) \
+    .addGrid(lda.topicConcentration, [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]) \
     .build()
 
 def evaluate_model(model, data):
