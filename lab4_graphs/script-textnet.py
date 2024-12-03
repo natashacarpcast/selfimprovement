@@ -21,7 +21,7 @@ spark = SparkSession \
         .appName("network") \
         .getOrCreate()
 
-data = spark.read.csv("../cleaned_moral_scores.csv", header= True).select(["id", "cleaned_text"])
+data = spark.read.csv("../data/cleaned_moral_scores.csv", header= True).select(["id", "cleaned_text"])
 
 english = [
     "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "as", "at", "be", 
