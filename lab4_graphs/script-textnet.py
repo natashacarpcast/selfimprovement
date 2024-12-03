@@ -134,7 +134,7 @@ processed_data = pipelineModel.transform(data)
 processed_data.persist()
 
 #Apply TF-IDF filtering
-tfizer = CountVectorizer(inputCol='finished_words', outputCol='tf_features', minDF=0.01, vocabSize=1000)
+tfizer = CountVectorizer(inputCol='finished_words', outputCol='tf_features', minDF=0.01, vocabSize=1500)
 tf_model = tfizer.fit(processed_data)
 tf_result = tf_model.transform(processed_data)
 vocabulary = tf_model.vocabulary
@@ -150,14 +150,14 @@ tfidf_result.persist()
 
 # Define a function to filter words by their TF-IDF score
 # UDF to map indices to words using the vocabulary
-def filter_tfidf(features, threshold=5, vocabulary=None):
+def filter_tfidf(features, threshold=1, vocabulary=None):
     if features is not None:
         # Filter based on TF-IDF score and map indices to actual words
         return [vocabulary[features.indices[i]] for i in range(len(features.values)) if features.values[i] >= threshold]
     return []
 
 # Register the UDF
-filter_udf = udf(lambda features: filter_tfidf(features, threshold=5, vocabulary=vocabulary), ArrayType(StringType()))
+filter_udf = udf(lambda features: filter_tfidf(features, threshold=1, vocabulary=vocabulary), ArrayType(StringType()))
 
 # Apply the filtering function
 df_filtered_tfidf = tfidf_result.withColumn("filtered_words_tfidf", filter_udf("tf_idf_features"))
@@ -197,10 +197,10 @@ edges_df = edges_df.groupBy("node1_norm", "node2_norm").sum("weight") \
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #MODIFY EACH RUN
-edges_df.write.mode("overwrite").csv("edges_network5", header=True)
+edges_df.write.mode("overwrite").csv("edges_network6", header=True)
 # Create nodes
 vertices_df = edges_df.select(F.col("node1_norm").alias("node")).union(edges_df.select(F.col("node2_norm").alias("node"))).distinct()
-vertices_df.write.mode("overwrite").csv("nodes_network5", header=True)
+vertices_df.write.mode("overwrite").csv("nodes_network6", header=True)
 
 
 
