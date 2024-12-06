@@ -40,7 +40,7 @@ Inside the [lab2_clustering folder](lab2_clustering), files should be viewed in 
 
 3-  All of the edges_network* and nodes_network* folders are simply the csv files produced by the text-network* notebooks including information on nodes and edges.
 
-4-  The community_detection* folders are the different attempts of community detection using the different folder. The one included in the final conclusions and the best one so far is the [sixth one](lab4_graphs/community_detection6.ipynb). As the text-network* notebooks, these are also all almost identical in structure and code. 
+4-  The community_detection* folders are the different attempts of community detection using the different networks. The one included in the final conclusions and the best one so far is the [sixth one](lab4_graphs/community_detection6.ipynb). As the text-network* notebooks, these are also all almost identical in structure and code. 
 
 5-  The [node2vec.ipynb](lab4_graphs/node2vec.ipynb) does node2vec training and clustering with nodes with attributes, as explained in report. 
 
