@@ -35,10 +35,15 @@ Inside the [lab2_clustering folder](lab2_clustering), files should be viewed in 
 ### Lab 4 - Graphs
 
 1-  All of the notebooks named text-network* are pyspark notebooks in which I created different text networks with varying conditions. For example, some of them had higher thresholds of TF IDF of words to be included in the network. I also played around with one of them only including nouns and adjectives. Other than those details, notebooks are essentially the same. After realizing the inefficiency, I created a [script-textnet.py](lab4_graphs/script-textnet.py) with its corresponding [sbatch file](lab4_graphs/script-textnet.sbatch) to simply change details there and send the job easier to the cluster for creating new networks. 
+
 2-  The [neighbors.ipynb](lab4_graphs/neighbors.ipynb) was a very naive and simple exploration of which were the strongest neighbors of certain morality words in some of the networks version. 
+
 3-  All of the edges_network* and nodes_network* folders are simply the csv files produced by the text-network* notebooks including information on nodes and edges.
+
 4-  The community_detection* folders are the different attempts of community detection using the different folder. The one included in the final conclusions and the best one so far is the [sixth one](lab4_graphs/community_detection6.ipynb). As the text-network* notebooks, these are also all almost identical in structure and code. 
+
 5-  The [node2vec.ipynb](lab4_graphs/node2vec.ipynb) does node2vec training and clustering with nodes with attributes, as explained in report. 
+
 6-  The [communitydetectionliwc](lab4_graphs/communitydetectionliwc) folder contains the [exploration notebook](lab4_graphs/communitydetectionliwc/exploration.ipynb) where the groups from the community detection 6 + the node2vec clusters where further analyzed in terms of their proportion of morality and emotional language.
 
 
