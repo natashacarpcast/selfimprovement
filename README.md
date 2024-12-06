@@ -32,7 +32,7 @@ Inside the [lab2_clustering folder](lab2_clustering), files should be viewed in 
 
 2- [Parquet files with cluster's assignations from lab 2](lab3_association_rules/data_and_predictions)
 
-### Lab 4 - Graphs
+### [Lab 4 - Graphs](lab4_graphs)
 
 1-  All of the notebooks named text-network* are pyspark notebooks in which I created different text networks with varying conditions. For example, some of them had higher thresholds of TF IDF of words to be included in the network. I also played around with one of them only including nouns and adjectives. Other than those details, notebooks are essentially the same. After realizing the inefficiency, I created a [script-textnet.py](lab4_graphs/script-textnet.py) with its corresponding [sbatch file](lab4_graphs/script-textnet.sbatch) to simply change details there and send the job easier to the cluster for creating new networks. 
 
